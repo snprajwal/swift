@@ -3953,6 +3953,10 @@ static void printParameterFlags(ASTPrinter &printer,
   if (flags.isCompileTimeLiteral())
     printer.printKeyword("_const", options, " ");
 
+  if (options.SkipAttributes) {
+    return;
+  }
+
   if (!options.excludeAttrKind(TypeAttrKind::Autoclosure) &&
       flags.isAutoClosure())
     printer.printAttrName("@autoclosure ");
